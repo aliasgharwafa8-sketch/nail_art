@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glam Nail Art Studio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ffe0ec, #fff5f8);
+    scroll-behavior: smooth;
+}
+header {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #e91e63;
+}
+.logo span { font-size: 30px; margin-right: 8px; }
+nav a { text-decoration: none; color: #333; margin: 0 15px; font-weight: 600; transition: 0.3s; }
+nav a:hover { color: #e91e63; }
+
+.hero { text-align: center; padding: 80px 20px; }
+.hero h1 { font-size: 40px; color: #e91e63; }
+.hero p { font-size: 18px; color: #555; }
+.hero button { margin-top: 20px; padding: 12px 25px; border: none; background: #e91e63; color: white; font-size: 16px; border-radius: 25px; cursor: pointer; transition: 0.3s; }
+.hero button:hover { background: #c2185b; }
+
+.services, .about-section { padding: 50px 20px; text-align: center; }
+.service-box { display: inline-block; background: white; padding: 20px; margin: 15px; width: 250px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+.service-box:hover { transform: translateY(-10px); }
+
+.gallery { padding: 60px 20px; text-align: center; }
+.gallery h2 { color: #e91e63; margin-bottom: 20px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+.gallery-grid img { width: 100%; border-radius: 15px; transition: 0.4s; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.gallery-grid img:hover { transform: scale(1.05); }
+
+.btn-outline-pink { border: 2px solid #e91e63; color: #e91e63; border-radius: 25px; padding: 8px 18px; font-weight: 600; transition: 0.3s; background: transparent; margin: 5px; cursor:pointer; }
+.btn-outline-pink:hover, .btn-outline-pink.active { background: #e91e63; color: white; }
+
+footer, .glam-footer { background: linear-gradient(135deg, #ff4da6, #ff99cc); color: white; padding: 40px 20px; text-align: center; }
+.social-icons { list-style: none; padding: 0; margin: 15px 0 0 0; display: flex; justify-content: center; gap: 20px; }
+.social-icons li { display: inline-block; }
+.social-icons a { width: 45px; height: 45px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; transition: 0.4s ease; box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+.social-icons a:hover { background: white; color: #ff4da6; transform: translateY(-8px) scale(1.1); box-shadow: 0 0 25px white; }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<header>
+<img src="img/nailpaint.avif" alt="img" width="50px" height="50px">
+<div class="logo"> Glam Nail Art</div>
+<nav class="navbar navbar-expand-lg">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="#services">Gel Nails</a></li>
+<li><a class="dropdown-item" href="#services">Extensions</a></li>
+<li><a class="dropdown-item" href="#services">Bridal</a></li>
+</ul>
+</li>
+
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Gallery</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('kids', this)">Kids</a></li>
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('elders', this)">Elders</a></li>
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('bridal-nail-art', this)">Bridal</a></li>
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('nail-extensions', this)">Extensions</a></li>
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('face-art', this)">Face Art</a></li>
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('geomatric', this)">Geometric</a></li>
+<li><a class="dropdown-item" href="#gallery" onclick="showCategory('flower', this)">Flowers</a></li>
+</ul>
+</li>
+
+<li class="nav-item"><a class="nav-link" href="#contact">Feedback</a></li>
+</ul>
+</nav>
+</header>
+
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+      
+       <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="img/1_PZXqSW381miAl2EUY4wcoQ.jpg" class="d-block w-100" alt="img" height="500px">
+      <div class="carousel-caption d-none d-md-block">
+    <h1 style="color: #e91e63;">Beautiful Nails, Beautiful You</h1>
+    <p style="color: #e91e63;">We specialize in Bridal Nail Art, Gel Nails, Acrylic Extensions, French Tips, Manicure & Pedicure services. Get stylish and long-lasting nail designs at Glam Nail Art Studio.</p>
+    <button onclick="location.href='#contact'" style="color: #e91e63;">Book Appointment</button>
+    </div>
+     </div>
+  
+        <div class="carousel-item">
+      <img src="img/Set_de_nail_art_1.webp" class="d-block w-100" alt="img" height="500px">
+      <div class="carousel-caption d-none d-md-block">
+    <h1 style="color: #e91e63;">Beautiful Nails, Beautiful You</h1>
+    <p style="color: #e91e63;">We specialize in Bridal Nail Art, Gel Nails, Acrylic Extensions, French Tips, Manicure & Pedicure services. Get stylish and long-lasting nail designs at Glam Nail Art Studio.</p>
+   <button onclick="location.href='#contact'" style="color: #e91e63;" >Book Appointment</button>
+    </div>
+  </div>
+
+
+    <div class="carousel-item ">
+      <img src="img/images.jpg" class="d-block w-100" alt="img" height="500px">
+      <div class="carousel-caption d-none d-md-block">
+    <h1 style="color: #e91e63;">Beautiful Nails, Beautiful You</h1>
+    <p style="color: #e91e63;">We specialize in Bridal Nail Art, Gel Nails, Acrylic Extensions, French Tips, Manicure & Pedicure services. Get stylish and long-lasting nail designs at Glam Nail Art Studio.</p>
+   <button onclick="location.href='#contact'" style="color: #e91e63;">Book Appointment</button>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<section id="about" class="about-section">
+<h2 style="color:#e91e63;">History of Nail Art</h2>
+<p style="max-width:800px; margin:auto; color:#555;">
+Nail art has a rich history dating back over 5000 years. It originated in Egypt & China where nail colors represented social status. Today, nail art is a global fashion trend including gel nails, acrylic extensions, French tips, and bridal designs.
+</p>
+</section>
+
+
+<section id="services" class="services">
+<h2>Our Services</h2>
+<div class="service-box"><h3>Gel Nails</h3><p>Long lasting shine & protection</p></div>
+<div class="service-box"><h3>Nail Extensions</h3><p>Trendy & stylish designs</p></div>
+<div class="service-box"><h3>Bridal Nail Art</h3><p>Elegant and detailed designs</p></div>
+</section>
+
+
+<section id="gallery" class="gallery">
+<h2>Gel Nail Designs</h2>
+
+
+<div class="text-center mb-3">
+<button class="btn-outline-pink" onclick="showCategory('kids', this)">Easy for Kids</button>
+<button class="btn-outline-pink" onclick="showCategory('elders', this)">Complex for Elders</button>
+<button class="btn-outline-pink" onclick="showCategory('bridal-nail-art', this)">Nail Art</button>
+<button class="btn-outline-pink" onclick="showCategory('nail-extensions', this)">Nail Extensions</button>
+<button class="btn-outline-pink" onclick="showCategory('face-art', this)">Face Art</button>
+<button class="btn-outline-pink" onclick="showCategory('geomatric', this)">Geometric</button>
+<button class="btn-outline-pink" onclick="showCategory('flower', this)">Flowers</button>
+</div>
+<section id="gallery" class="gallery">
+    <div class="gallery-grid d-none" id="bridal-nail-art">
+        <img src="img/Extensions (1).jpg" alt="Gel 1">
+        <img src="img/Extensions(2).jpg" alt="Gel 2">
+        <img src="img/Extensions(3).jpg" alt="Gel 3">
+        <img src="img/Extensions(4).jpg" alt="Gel 4">
+        <img src="img/Extensions(5).jpg" alt="Gel 5">
+         </div>
+
+    <div class="gallery-grid d-none" id="nail-extensions">
+        <img src="img/nailart(1).jpg " alt="art 1">
+        <img src="img/nailart(2).jpg" alt="art 2">
+        <img src="img/nailart (3).jpg" alt="art 3">
+        <img src="img/nailart (4).jpg" alt="art 4">
+        <img src="img/nailart (5).jpg" alt="art 5">
+    </div>
+
+    
+    <div class="gallery-grid d-none" id="kids">
+        <img src="img/kids(1).jpg" alt="Easy 1">
+        <img src="img/kids(2).webp" alt="Easy 2">
+        <img src="img/kids(3).jpg" alt="Easy 3">
+        <img src="img/kids(4).jpg" alt="Easy 4">
+        <img src="img/kids(5).jpg" alt="Easy 5">
+         <img src="img/kids(6).webp" alt="Easy 6">
+    </div>
+
+    
+    <div class="gallery-grid d-none" id="elders">
+        <img src="img/elder(2).avif" alt="Complex 2">
+        <img src="img/elder(4).jpg" alt="Complex 4">
+        <img src="img/elder(5).png" alt="Complex 5">
+    </div>
+    <div id="face-art" class="gallery-grid d-none">
+        <img src="img/face.png" alt="face-art">
+        <img src="img/face.webp" alt="face-art">
+        <img src="img/faces(1).jpg" alt="face-art">
+    </div>
+    <div id="geomatric" class="gallery-grid d-none">
+        <img src="img/geomatric (2).jpg" alt="geomatric">
+         <img src="img/geomatric.jpg" alt="geomatric">
+         <img src="img/blue_geomatric_nails.webp" alt="geomatric">
+    </div>
+    <div id="flower" class="gallery-grid d-none">
+        <img src="img/flower (1).jpg" alt="flower">
+        <img src="img/flowers (2).jpg" alt="flower">
+        <img src="img/flowers.jpg" alt="flower">
+    </div>
+
+</section>
+
+<script>
+function showCategory(category, element){
+    const categories = ['kids','elders','bridal-nail-art','nail-extensions','face-art','geomatric','flower'];
+    categories.forEach(cat => document.getElementById(cat).classList.add('d-none'));
+    if(element){
+        document.querySelectorAll('.btn-outline-pink').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+    }
+    const div = document.getElementById(category);
+    div.classList.remove('d-none');
+    div.scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+
+<section id="products" class="services">
+<h2>Products & Accessories</h2>
+<div class="service-box">Nail Polish</div>
+<div class="service-box">Brushes & Tools</div>
+<div class="service-box">Nail Files & Buffers</div>
+<div class="service-box">Stickers & Gems</div>
+</section>
+
+
+<section id="nail-care" class="about-section">
+<h2>Nail Care Tips</h2>
+<ul>
+<li>Keep nails moisturized</li>
+<li>Use base & top coat</li>
+<li>Do not bite nails</li>
+<li>Trim regularly</li>
+<li>Avoid harsh chemicals</li>
+</ul>
+</section>
+
+
+<section id="contact" class="services">
+<h2>Contact Us / Feedback</h2>
+<form>
+<div class="mb-3"><label>Your Name</label><input type="text" class="form-control" required></div>
+<div class="mb-3"><label>Email</label><input type="email" class="form-control" required></div>
+<div class="mb-3"><label>Message</label><textarea class="form-control" rows="4" required></textarea></div>
+<button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+<hr>
+<h4 style="color:#e91e63;">Our Location</h4>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d376.0777846826627!2d68.27614750365362!3d25.380887725345566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2s!4v1772049959111!5m2!1sen!2s" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<footer class="glam-footer">
+<h3>Glam Nail Art Studio</h3>
+<ul class="social-icons">
+<li><a href="https://www.facebook.com/people/Snowy-Reel/61563602309884/?ref=NONE_ig_profile_ac"><i class="fa-brands fa-facebook-f"></i></a></li>
+<li><a href="https://www.instagram.com/snowy_reel/"><i class="fa-brands fa-instagram"></i></a></li>
+<li><a href="https://www.linkedin.com/in/wafa-aliasghar-301a6835b/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+<li><a href="https://www.youtube.com/@snowyshorts7"><i class="fa-brands fa-youtube"></i></a></li>
+</ul>
+<p>© 2026 Glam Nail Art Studio | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
